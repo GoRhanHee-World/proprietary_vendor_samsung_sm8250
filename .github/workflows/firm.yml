@@ -132,6 +132,14 @@ jobs:
           for file in $FILES; do tar xvf ${{ env.ap_tar }} ${file}; done
           tar cvf ${{ env.latest_shortversion }}_kernel.tar *.lz4
           rm -f *.lz4
+       
+      - name: Extract recovery image
+        if: env.need_update == 1
+        run: |
+          tar xvf "${{ env.ap_tar }}" recovery.img.lz4
+          lz4 -d recovery.img.lz4 recovery.img
+          rm -f recovery.img.lz4
+          tar cvf "${{ env.latest_shortversion }}_recovery.tar" recovery.img    
 
       - name: Extract PIT file
         if: env.need_update == 1
@@ -195,6 +203,7 @@ jobs:
             ${{ env.cp_tar }}
             ${{ env.home_csc_tar }}
             ${{ env.latest_shortversion }}_kernel.tar
+            ${{ env.latest_shortversion }}_recovery.tar
             ${{ env.pit_file }}
             ${{ env.latest_shortversion }}_patched_vbmeta.tar
             ${{ env.latest_shortversion }}_vendor.zip
