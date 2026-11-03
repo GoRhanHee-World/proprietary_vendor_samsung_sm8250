@@ -14,14 +14,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - model: "SM-G780G"
-            csc: "BTU"
-            omc: "OXM"
-            imei: "357107761234568"
-          - model: "SM-G781B"
-            csc: "BTU"
-            omc: "OXM"
-            imei: "358619991234563"
+          - model : "SM-G981N"
+            csc : "KOO"
+            omc : "OKR"
+            imei : "353346111234563"
+          - model : "SM-G986N"
+            csc : "KOO"
+            omc : "OKR"
+            imei : "354203111234565"
+          - model : "SM-G988N"
+            csc : "KOO"
+            omc : "OKR"
+            imei : "352651111234567"  
 
     steps:
       - name: Checkout repo
