@@ -1,10 +1,29 @@
-name: Test Runner
+name: Firmware Matrix Test
 
 on:
   workflow_dispatch:
 
 jobs:
-  test:
+  update:
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - model: "SM-G981N"
+            csc: "KOO"
+            omc: "OKR"
+          - model: "SM-G986N"
+            csc: "KOO"
+            omc: "OKR"
+          - model: "SM-G988N"
+            csc: "KOO"
+            omc: "OKR"
+
     steps:
-      - run: echo "Runner works!"
+      - name: Test matrix
+        run: |
+          echo "Model: ${{ matrix.model }}"
+          echo "CSC: ${{ matrix.csc }}"
+          echo "OMC: ${{ matrix.omc }}"
