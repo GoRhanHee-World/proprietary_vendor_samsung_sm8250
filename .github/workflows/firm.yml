@@ -25,7 +25,7 @@ jobs:
           - model : "SM-G988N"
             csc : "KOO"
             omc : "OKR"
-            imei : "352651111234567"  
+            imei : "352651110496241"  
 
     steps:
       - name: Checkout repo
